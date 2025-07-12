@@ -29,15 +29,19 @@ portal-cidadao/
 │   └── queries.sql        # Consultas SQL documentadas
 ├── src/
 │   ├── app/
-│   │   ├── consultas/     # Páginas das consultas
+│   │   ├── consultas/     # Páginas das consultas SQL
 │   │   │   ├── patrimonio/
 │   │   │   ├── educacao-beneficios/
 │   │   │   └── saude-familia/
-│   │   ├── cidadaos/      # Lista de cidadãos
+│   │   ├── cidadaos/      # Lista e detalhes de cidadãos
+│   │   │   ├── page.tsx           # Lista paginada
+│   │   │   └── [cpf]/page.tsx     # Detalhes individuais
+│   │   ├── page.tsx       # Página principal
 │   │   └── layout.tsx     # Layout da aplicação
 │   ├── components/        # Componentes reutilizáveis
-│   │   ├── Pagination.tsx      # Componente de paginação
-│   │   └── PaginatedTable.tsx  # Tabela com paginação
+│   │   ├── Pagination.tsx         # Componente de paginação
+│   │   ├── PaginatedTable.tsx     # Tabela com paginação
+│   │   └── CitizensTable.tsx      # Tabela para cidadãos
 │   └── lib/
 │       ├── pg.ts          # Configuração do PostgreSQL
 │       └── pagination.ts  # Utilitários de paginação
@@ -240,21 +244,28 @@ http://localhost:3000
 
 ### Interface Web
 
-- **Página Principal**: Navegação entre as diferentes consultas
-- **Consulta de Patrimônio**: Visualização de bens dos cidadãos
+- **Página Principal**: Navegação entre as diferentes consultas e funcionalidades
+- **Consulta de Patrimônio**: Visualização de bens dos cidadãos com estatísticas
 - **Consulta de Educação e Benefícios**: Análise do perfil educacional e social
-- **Consulta de Saúde e Família**: Informações médicas e familiares
+- **Consulta de Saúde e Família**: Informações médicas e familiares detalhadas
+- **Lista de Cidadãos**: Visualização paginada de todos os cidadãos cadastrados
+- **Detalhes do Cidadão**: Página individual com informações completas do cidadão
 - **Paginação Avançada**: Navegação eficiente através de grandes volumes de dados
+- **Navegação Interativa**: Clique em linhas das tabelas para navegar entre páginas
 - **Design Responsivo**: Adaptável a diferentes tamanhos de tela
 
 ### Características Técnicas
 
 - **Consultas SQL Complexas**: Envolvendo múltiplas JOINs e agregações
-- **Tipagem TypeScript**: Interface tipada para os dados
+- **Tipagem TypeScript**: Interface tipada para todos os dados e componentes
 - **Tratamento de Erros**: Exibição de erros de conexão ou consulta
 - **Documentação Inline**: Explicação das consultas nas páginas
 - **Performance**: Consultas paralelas para melhor desempenho
 - **Paginação Inteligente**: Componente reutilizável com navegação otimizada
+- **Server/Client Components**: Arquitetura híbrida do Next.js 15
+- **Data Formatting**: Formatação de dados no servidor para melhor performance
+- **Interactive Navigation**: Navegação programática entre páginas
+- **Responsive Tables**: Tabelas adaptativas para diferentes dispositivos
 
 ## 🔧 Componentes de Paginação
 
@@ -267,6 +278,8 @@ Componente reutilizável que oferece:
 - **Indicadores visuais**: Mostra página atual e total de registros
 - **Configuração flexível**: Diferentes números de itens por página
 - **Renderização customizada**: Colunas com formatação específica
+- **Cliques em linhas**: Suporte a navegação através de cliques nas linhas
+- **Feedback visual**: Indicadores de interatividade (cursor pointer, hover effects)
 
 ### Pagination Component
 
@@ -331,10 +344,21 @@ O sistema utiliza as seguintes tabelas principais:
 
 ### Estrutura do Código
 
-- **Server Components**: Páginas que fazem consultas no servidor
-- **Database Connection**: Pool de conexões PostgreSQL
-- **Type Safety**: Interfaces TypeScript para os dados
-- **Error Handling**: Tratamento de erros de banco de dados
+- **Server Components**: Páginas que fazem consultas no servidor (Next.js 15 App Router)
+- **Client Components**: Componentes interativos para navegação e paginação
+- **Database Connection**: Pool de conexões PostgreSQL com reutilização
+- **Type Safety**: Interfaces TypeScript para todos os dados e componentes
+- **Error Handling**: Tratamento robusto de erros de banco de dados e UI
+- **Pagination System**: Sistema de paginação modular e reutilizável
+- **Route Navigation**: Navegação programática entre páginas
+- **Data Formatting**: Formatação de dados no servidor para melhor performance
+
+### Componentes Principais
+
+- **PaginatedTable.tsx**: Tabela com paginação e suporte a cliques em linhas
+- **CitizensTable.tsx**: Tabela especializada para listagem de cidadãos
+- **Pagination.tsx**: Componente de navegação entre páginas
+- **Query Pages**: Páginas específicas para cada consulta SQL
 
 ### Padrões Utilizados
 
