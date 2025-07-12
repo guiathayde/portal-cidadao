@@ -367,6 +367,20 @@ O sistema utiliza as seguintes tabelas principais:
 - **Responsive Design**: Layout adaptativo
 - **Clean Code**: Código limpo e documentado
 
+## Dificuldades de Desenvolvimento
+
+Durante o desenvolvimento do Portal do Cidadão, enfrentamos diversos desafios técnicos significativos:
+
+**Arquitetura Next.js 15**: A migração para a nova arquitetura App Router trouxe complexidades na separação entre Server e Client Components, especialmente ao implementar funcionalidades interativas como paginação.
+
+**Paginação Complexa**: Desenvolver um sistema de paginação reutilizável que funcionasse com diferentes tipos de dados e mantivesse performance otimizada exigiu várias iterações de design.
+
+**Boundaries Server/Client**: O maior desafio foi resolver erros de serialização ao tentar passar funções de renderização do servidor para componentes cliente, forçando uma reestruturação da formatação de dados.
+
+**Consultas SQL Complexas**: Balancear performance e legibilidade nas consultas com múltiplos JOINs, garantindo que os índices fossem utilizados corretamente.
+
+**TypeScript Integration**: Criar interfaces tipadas que abrangessem todas as variações de dados das consultas SQL mantendo flexibilidade para expansões futuras.
+
 ## 📝 Conclusão
 
 Este sistema demonstra a implementação de consultas SQL complexas em uma aplicação web moderna, mostrando como relacionar múltiplas entidades e apresentar os dados de forma clara e intuitiva. O projeto serve como exemplo prático de integração entre banco de dados relacional e interface web responsiva.
