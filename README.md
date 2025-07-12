@@ -349,6 +349,12 @@ Este sistema demonstra a implementação de consultas SQL complexas em uma aplic
 
 ## 👥 Autor
 
+Guilherme César Athayde
+
+João Victor Pacini
+
+Lucas de Oliveira Rodrigues Alves
+
 Desenvolvido para a disciplina de Projeto Integrado de Banco de Dados (PIBD) da UFSCar.
 
 ---
